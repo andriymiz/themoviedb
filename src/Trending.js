@@ -10,12 +10,13 @@ export default {
    * @param {('day'|'week')} time_window
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {string} options.language
    * @returns {Promise}
    * @memberof TheMovieDb
    */
   getTrending(media_type, time_window, options) {
     return this.getV3(`trending/${media_type}/${time_window}`, {
-      ...this.metas(["api_key"]),
+      ...this.metas(["api_key", "language"]),
       ...options
     });
   }
