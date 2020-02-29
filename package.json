@@ -1,0 +1,49 @@
+{
+  "name": "@andriymiz/themoviedb",
+  "version": "1.0.0",
+  "description": "Javascript API wrapper for The Movie Database.",
+  "main": "dist/TheMovieDB.js",
+  "browser": "dist/TheMovieDB.js",
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "prebuild": "rm -rf dist && mkdir -p dist",
+    "build": "NODE_ENV=production rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "jsdoc2md src/**.js > docs/api.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andriymiz/themoviedb.git"
+  },
+  "keywords": [
+    "tmdb",
+    "themoviedb",
+    "javascript api wrapper",
+    "api",
+    "promises"
+  ],
+  "author": {
+    "name": "Andriy Miz",
+    "url": "https://github.com/andriymiz"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andriymiz/themoviedb/issues"
+  },
+  "homepage": "https://github.com/andriymiz/themoviedb#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "jsdoc-to-markdown": "^5.0.3",
+    "prettier": "^1.19.1",
+    "rollup": "^1.32.0"
+  }
+}
