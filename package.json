@@ -1,6 +1,6 @@
 {
   "name": "@andriymiz/themoviedb",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Javascript API wrapper for The Movie Database.",
   "main": "dist/TheMovieDB.js",
   "browser": "dist/TheMovieDB.js",
