@@ -64,17 +64,21 @@ class TheMovieDb {
       name: ""
     };
     this.country = country || { iso_3166_1: "UA", english_name: "", name: "" };
+    this.cachePolicy = "default"; // default|no-store|reload|no-cache|force-cache|only-if-cached
   }
 
   /**
    * Make GET parameters
    * @param {string} startUrl
    * @param {Object} [options={}]
-   * @returns {string}
+   * @returns {URL}
    * @memberof TheMovieDb
    */
   query(startUrl, options = {}) {
     let url = new URL(startUrl);
+    if (options.cache !== undefined && options.cache !== null) {
+      delete options.cache;
+    };
 
     Object.keys(options).forEach(key => {
       if (options[key] !== null) {
@@ -132,7 +136,11 @@ class TheMovieDb {
    * @memberof TheMovieDb
    */
   getV3(url, options = {}) {
-    return fetch(this.query(`${this.base_uri}3/${url}`, options)).then(res =>
+    const cache = options.cache || this.cachePolicy;
+
+    return fetch(this.query(`${this.base_uri}3/${url}`, options), {
+      cache: cache
+    }).then(res =>
       res.json()
     );
   }
@@ -164,7 +172,9 @@ class TheMovieDb {
    * @memberof TheMovieDb
    */
   getV4(url, options = {}) {
+    const cache = options.cache || this.cachePolicy;
     return fetch(this.query(`${this.base_uri}4/${url}`, options), {
+      cache: cache,
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=utf-8",

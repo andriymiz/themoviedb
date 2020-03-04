@@ -3,7 +3,7 @@
   "version": "1.0.7",
   "description": "Javascript API wrapper for The Movie Database.",
   "main": "dist/TheMovieDB.js",
-  "browser": "dist/TheMovieDB.js",
+  "browser": "dist/the-movie-db.umd.js",
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",

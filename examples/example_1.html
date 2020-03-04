@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://unpkg.com/@andriymiz/themoviedb@latest/dist/the-movie-db.umd.js"></script>
+
+    <title>@andriymiz/themoviedb Example 1</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center p-3">TheMovieDB Example</h1>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">Your v3 api key</span>
+        </div>
+        <input type="text" class="form-control" id="v3-key" aria-describedby="basic-addon3">
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="update()">Update</button>
+  
+      <div class="row row-cols-1 row-cols-md-3" id="movies"></div>
+    </div>
+
+    <script>
+      const update = () => {
+        const tmdb = new TheMovieDB(
+          document.getElementById("v3-key").value
+        );
+        var moviesBlock = document.getElementById("movies");
+        var moviesString = "";
+        tmdb.getConfiguration()
+          .then(configs => {
+            tmdb.getPopularMovies()
+              .then(data => data.results.forEach(element => {
+                moviesString += '<div class="col mb-4">';
+                moviesString += '<div class="card h-100">';moviesString += '<img src="';
+                moviesString += configs.images.secure_base_url;
+                moviesString += configs.images.poster_sizes[4];
+                moviesString += element.poster_path;
+                moviesString += '" class="card-img-top" alt="">';
+                moviesString += '</div>';
+                moviesString += '</div>';
+              })).then(() => {
+                document.getElementById("movies").innerHTML = moviesString;
+              });
+          });
+      }
+    </script>
+  </body>
+</html>

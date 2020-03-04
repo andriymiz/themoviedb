@@ -4,7 +4,7 @@ export default [
   {
     input: 'src/TheMovieDB.js',
     output: {
-      name: 'theMovieDb',
+      name: 'TheMovieDB',
       file: pkg.browser,
       format: 'umd',
       sourcemap: true
