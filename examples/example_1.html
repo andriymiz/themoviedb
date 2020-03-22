@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://unpkg.com/@andriymiz/themoviedb@latest/dist/the-movie-db.umd.js"></script>
+    <script src="../dist/the-movie-db.umd.js"></script>
 
     <title>@andriymiz/themoviedb Example 1</title>
   </head>
@@ -16,23 +16,34 @@
       <h1 class="text-center p-3">TheMovieDB Example</h1>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="basic-addon3">Your v3 api key</span>
+          <span class="input-group-text">Your v3 api key</span>
         </div>
-        <input type="text" class="form-control" id="v3-key" aria-describedby="basic-addon3">
+        <input type="text" class="form-control" id="v3-key">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Your v3 session id</span>
+        </div>
+        <input type="text" class="form-control" id="v3-session-id">
       </div>
 
       <button type="button" class="btn btn-primary" onclick="update()">Update</button>
   
-      <div class="row row-cols-1 row-cols-md-3" id="movies"></div>
+      <ul class="mt-2 list-group" id="lists"></ul>
+      <div class="mt-2 row row-cols-1 row-cols-md-3" id="movies"></div>
     </div>
 
     <script>
       const update = () => {
         const tmdb = new TheMovieDB(
-          document.getElementById("v3-key").value
+          document.getElementById("v3-key").value,
+          null,
+          document.getElementById("v3-session-id").value
         );
+        tmdb.v3_account = {id:1};
         var moviesBlock = document.getElementById("movies");
         var moviesString = "";
+        var listsString = "";
         tmdb.getConfiguration()
           .then(configs => {
             tmdb.getPopularMovies()
@@ -47,6 +58,15 @@
                 moviesString += '</div>';
               })).then(() => {
                 document.getElementById("movies").innerHTML = moviesString;
+              });
+
+            tmdb.getLists()
+              .then(data => data.results.forEach(element => {
+                listsString += '<li class="list-group-item">';
+                listsString += element.name;
+                listsString += '</li>';
+              })).then(() => {
+                document.getElementById("lists").innerHTML = listsString;
               });
           });
       }
