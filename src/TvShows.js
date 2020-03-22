@@ -6,12 +6,15 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.session_id
+   * @param {string} options.guest_session_id
+   * @param {string} options.append_to_response - Example: 'account_states,alternative_titles,changes,content_ratings,credits,episode_groups,external_ids,images,keywords,recommendations,reviews,screened_theatrically,similar,translations,videos'
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTv(tv_id, options) {
+  getTvShow(tv_id, options) {
     return this.getV3(`tv/${tv_id}`, {
-      ...this.metas(["api_key", "language"]),
+      ...this.metas(["api_key", "language", "session_id", "guest_session_id"]),
       ...options
     });
   },
@@ -22,10 +25,12 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.session_id
+   * @param {string} options.guest_session_id
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvAccountStates(tv_id, options) {
+  getTvShowAccountStates(tv_id, options) {
     return this.getV3(`tv/${tv_id}/account_states`, {
       ...this.metas(["api_key", "language", "session_id", "guest_session_id"]),
       ...options
@@ -41,7 +46,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvAlternativeTitles(tv_id, options) {
+  getTvShowAlternativeTitles(tv_id, options) {
     return this.getV3(`tv/${tv_id}/alternative_titles`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -58,7 +63,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvChanges(tv_id, options) {
+  getTvShowChanges(tv_id, options) {
     return this.getV3(`tv/${tv_id}/changes`, {
       ...this.metas(["api_key"]),
       ...options
@@ -75,7 +80,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvContentRatings(tv_id, options) {
+  getTvShowContentRatings(tv_id, options) {
     return this.getV3(`tv/${tv_id}/content_ratings`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -92,7 +97,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvCredits(tv_id, options) {
+  getTvShowCredits(tv_id, options) {
     return this.getV3(`tv/${tv_id}/credits`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -109,7 +114,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvEpisodeGroups(tv_id, options) {
+  getTvShowEpisodeGroups(tv_id, options) {
     return this.getV3(`tv/${tv_id}/episode_groups`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -126,7 +131,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvExternalIds(tv_id, options) {
+  getTvShowExternalIds(tv_id, options) {
     return this.getV3(`tv/${tv_id}/external_ids`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -139,10 +144,11 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.include_image_language
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvImages(tv_id, options) {
+  getTvShowImages(tv_id, options) {
     return this.getV3(`tv/${tv_id}/images`, {
       ...this.metas(["api_key", "language", "include_image_language"]),
       ...options
@@ -157,7 +163,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvKeywords(tv_id, options) {
+  getTvShowKeywords(tv_id, options) {
     return this.getV3(`tv/${tv_id}/keywords`, {
       ...this.metas(["api_key"]),
       ...options
@@ -174,7 +180,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvRecommendations(tv_id, options) {
+  getTvShowRecommendations(tv_id, options) {
     return this.getV3(`tv/${tv_id}/recommendations`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -191,7 +197,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvReviews(tv_id, options) {
+  getTvShowReviews(tv_id, options) {
     return this.getV3(`tv/${tv_id}/reviews`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -207,7 +213,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvScreenedTheatrically(tv_id, options) {
+  getTvShowScreenedTheatrically(tv_id, options) {
     return this.getV3(`tv/${tv_id}/screened_theatrically`, {
       ...this.metas(["api_key"]),
       ...options
@@ -225,7 +231,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvSimilar(tv_id, options) {
+  getTvShowSimilar(tv_id, options) {
     return this.getV3(`tv/${tv_id}/similar`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -240,7 +246,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvTranslations(tv_id, options) {
+  getTvShowTranslations(tv_id, options) {
     return this.getV3(`tv/${tv_id}/translations`, {
       ...this.metas(["api_key"]),
       ...options
@@ -256,7 +262,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTvVideos(tv_id, options) {
+  getTvShowVideos(tv_id, options) {
     return this.getV3(`tv/${tv_id}/videos`, {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -271,11 +277,11 @@ export default {
    * @param {string} options.session_id
    * @param {string} options.guest_session_id
    * @param {Object} body
-   * @param {number} body.value - Required
+   * @param {number} body.value - Required, min:0.5, max:10
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  rateTv(tv_id, options, body) {
+  rateTvShow(tv_id, options, body) {
     return this.postV3(
       `tv/${tv_id}/rating`,
       {
@@ -296,7 +302,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  deleteTvRating(tv_id, options) {
+  deleteTvShowRating(tv_id, options) {
     return this.postV3(
       `tv/${tv_id}/rating`,
       {
@@ -317,7 +323,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getLatestTv(options) {
+  getLatestTvShow(options) {
     return this.getV3("tv/latest", {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -335,7 +341,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getAiringTodayTvs(options) {
+  getAiringTodayTvShows(options) {
     return this.getV3("tv/airing_today", {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -351,7 +357,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getOnTheAirTvs(options) {
+  getOnTheAirTvShows(options) {
     return this.getV3("tv/on_the_air", {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -368,7 +374,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getPopularTvs(options) {
+  getPopularTvShows(options) {
     return this.getV3("tv/popular", {
       ...this.metas(["api_key", "language"]),
       ...options
@@ -384,7 +390,7 @@ export default {
    * @returns {Promise}
    * @memberof TheMovieDb
    */
-  getTopRatedTvs(options) {
+  getTopRatedTvShows(options) {
     return this.getV3("tv/top_rated", {
       ...this.metas(["api_key", "language"]),
       ...options
