@@ -32,7 +32,7 @@
 * [TheMovieDb](#TheMovieDb)
     * [new TheMovieDb(api_key, api_token, session_id, access_token, v3_account, v4_account, language, country)](#new_TheMovieDb_new)
     * _instance_
-        * [.query(startUrl, [options])](#TheMovieDb+query) ⇒ <code>string</code>
+        * [.query(startUrl, [options])](#TheMovieDb+query) ⇒ <code>URL</code>
         * [.metas(options)](#TheMovieDb+metas) ⇒ <code>Object</code>
         * [.getV3(url, [options])](#TheMovieDb+getV3) ⇒ <code>Promise</code>
         * [.postV3(url, [options], [body], [method])](#TheMovieDb+postV3) ⇒ <code>Promise</code>
@@ -45,43 +45,24 @@
     * _static_
         * [.getAccount(options)](#TheMovieDb.getAccount) ⇒ <code>Promise</code>
         * [.getLists(account_id, options)](#TheMovieDb.getLists) ⇒ <code>Promise</code>
-        * [.getMyLists(options)](#TheMovieDb.getMyLists) ⇒ <code>Promise</code>
         * [.getFavoritesMovies(account_id, options)](#TheMovieDb.getFavoritesMovies) ⇒ <code>Promise</code>
-        * [.getMyFavoritesMovies(options)](#TheMovieDb.getMyFavoritesMovies) ⇒ <code>Promise</code>
         * [.getFavoritesTvShows(account_id, options)](#TheMovieDb.getFavoritesTvShows) ⇒ <code>Promise</code>
-        * [.getMyFavoritesTvShows(options)](#TheMovieDb.getMyFavoritesTvShows) ⇒ <code>Promise</code>
         * [.markAsFavorite(account_id, options, body)](#TheMovieDb.markAsFavorite) ⇒ <code>Promise</code>
-        * [.markAsMyFavorite(options)](#TheMovieDb.markAsMyFavorite) ⇒ <code>Promise</code>
         * [.getRatedMovies(account_id, options)](#TheMovieDb.getRatedMovies) ⇒ <code>Promise</code>
-        * [.getMyRatedMovies(options)](#TheMovieDb.getMyRatedMovies) ⇒ <code>Promise</code>
         * [.getRatedTvShows(account_id, options)](#TheMovieDb.getRatedTvShows) ⇒ <code>Promise</code>
-        * [.getMyRatedTvShows(options)](#TheMovieDb.getMyRatedTvShows) ⇒ <code>Promise</code>
         * [.getRatedTvEpisodes(account_id, options)](#TheMovieDb.getRatedTvEpisodes) ⇒ <code>Promise</code>
-        * [.getMyRatedTvEpisodes(options)](#TheMovieDb.getMyRatedTvEpisodes) ⇒ <code>Promise</code>
         * [.getMovieWatchlist(account_id, options)](#TheMovieDb.getMovieWatchlist) ⇒ <code>Promise</code>
-        * [.getMyMovieWatchlist(options)](#TheMovieDb.getMyMovieWatchlist) ⇒ <code>Promise</code>
         * [.getTvShowWatchlist(account_id, options)](#TheMovieDb.getTvShowWatchlist) ⇒ <code>Promise</code>
-        * [.getMyTvShowWatchlist(options)](#TheMovieDb.getMyTvShowWatchlist) ⇒ <code>Promise</code>
-        * [.addToWatchlist(account_id, options)](#TheMovieDb.addToWatchlist) ⇒ <code>Promise</code>
-        * [.addToMyWatchlist(options)](#TheMovieDb.addToMyWatchlist) ⇒ <code>Promise</code>
+        * [.addToWatchlist(account_id, options, body)](#TheMovieDb.addToWatchlist) ⇒ <code>Promise</code>
         * [.getV4Lists(account_id, options)](#TheMovieDb.getV4Lists) ⇒ <code>Promise</code>
-        * [.getMyV4Lists(options)](#TheMovieDb.getMyV4Lists) ⇒ <code>Promise</code>
         * [.getV4FavoritesMovies(account_id, options)](#TheMovieDb.getV4FavoritesMovies) ⇒ <code>Promise</code>
-        * [.getMyV4FavoritesMovies(options)](#TheMovieDb.getMyV4FavoritesMovies) ⇒ <code>Promise</code>
         * [.getV4FavoritesTvShows(account_id, options)](#TheMovieDb.getV4FavoritesTvShows) ⇒ <code>Promise</code>
-        * [.getMyV4FavoritesTvShows(options)](#TheMovieDb.getMyV4FavoritesTvShows) ⇒ <code>Promise</code>
         * [.getV4MovieRecommendations(account_id, options)](#TheMovieDb.getV4MovieRecommendations) ⇒ <code>Promise</code>
-        * [.getMyV4MovieRecommendations(options)](#TheMovieDb.getMyV4MovieRecommendations) ⇒ <code>Promise</code>
         * [.getV4TvShowRecommendations(account_id, options)](#TheMovieDb.getV4TvShowRecommendations) ⇒ <code>Promise</code>
-        * [.getMyV4TvShowRecommendations(options)](#TheMovieDb.getMyV4TvShowRecommendations) ⇒ <code>Promise</code>
         * [.getV4MovieWatchlist(account_id, options)](#TheMovieDb.getV4MovieWatchlist) ⇒ <code>Promise</code>
-        * [.getMyV4MovieWatchlist(options)](#TheMovieDb.getMyV4MovieWatchlist) ⇒ <code>Promise</code>
         * [.getV4TvShowWatchlist(account_id, options)](#TheMovieDb.getV4TvShowWatchlist) ⇒ <code>Promise</code>
-        * [.getMyV4TvShowWatchlist(options)](#TheMovieDb.getMyV4TvShowWatchlist) ⇒ <code>Promise</code>
         * [.getV4RatedMovies(account_id, options)](#TheMovieDb.getV4RatedMovies) ⇒ <code>Promise</code>
-        * [.getMyV4RatedMovies(options)](#TheMovieDb.getMyV4RatedMovies) ⇒ <code>Promise</code>
         * [.getV4RatedTvShows(account_id, options)](#TheMovieDb.getV4RatedTvShows) ⇒ <code>Promise</code>
-        * [.getMyV4RatedTvShows(options)](#TheMovieDb.getMyV4RatedTvShows) ⇒ <code>Promise</code>
         * [.createGuestSession(options)](#TheMovieDb.createGuestSession) ⇒ <code>Promise</code>
         * [.createRequestToken(options)](#TheMovieDb.createRequestToken) ⇒ <code>Promise</code>
         * [.createSession(options, body)](#TheMovieDb.createSession) ⇒ <code>Promise</code>
@@ -198,29 +179,29 @@
         * [.getTvSeasonExternalIds(tv_id, season_number, options)](#TheMovieDb.getTvSeasonExternalIds) ⇒ <code>Promise</code>
         * [.getTvSeasonImages(tv_id, season_number, options)](#TheMovieDb.getTvSeasonImages) ⇒ <code>Promise</code>
         * [.getTvSeasonVideos(tv_id, season_number, options)](#TheMovieDb.getTvSeasonVideos) ⇒ <code>Promise</code>
-        * [.getTv(tv_id, options)](#TheMovieDb.getTv) ⇒ <code>Promise</code>
-        * [.getTvAccountStates(tv_id, options)](#TheMovieDb.getTvAccountStates) ⇒ <code>Promise</code>
-        * [.getTvAlternativeTitles(tv_id, options)](#TheMovieDb.getTvAlternativeTitles) ⇒ <code>Promise</code>
-        * [.getTvChanges(tv_id, options)](#TheMovieDb.getTvChanges) ⇒ <code>Promise</code>
-        * [.getTvContentRatings(tv_id, options)](#TheMovieDb.getTvContentRatings) ⇒ <code>Promise</code>
-        * [.getTvCredits(tv_id, options)](#TheMovieDb.getTvCredits) ⇒ <code>Promise</code>
-        * [.getTvEpisodeGroups(tv_id, options)](#TheMovieDb.getTvEpisodeGroups) ⇒ <code>Promise</code>
-        * [.getTvExternalIds(tv_id, options)](#TheMovieDb.getTvExternalIds) ⇒ <code>Promise</code>
-        * [.getTvImages(tv_id, options)](#TheMovieDb.getTvImages) ⇒ <code>Promise</code>
-        * [.getTvKeywords(tv_id, options)](#TheMovieDb.getTvKeywords) ⇒ <code>Promise</code>
-        * [.getTvRecommendations(tv_id, options)](#TheMovieDb.getTvRecommendations) ⇒ <code>Promise</code>
-        * [.getTvReviews(tv_id, options)](#TheMovieDb.getTvReviews) ⇒ <code>Promise</code>
-        * [.getTvScreenedTheatrically(tv_id, options)](#TheMovieDb.getTvScreenedTheatrically) ⇒ <code>Promise</code>
-        * [.getTvSimilar(tv_id, options)](#TheMovieDb.getTvSimilar) ⇒ <code>Promise</code>
-        * [.getTvTranslations(tv_id, options)](#TheMovieDb.getTvTranslations) ⇒ <code>Promise</code>
-        * [.getTvVideos(tv_id, options)](#TheMovieDb.getTvVideos) ⇒ <code>Promise</code>
-        * [.rateTv(tv_id, options, body)](#TheMovieDb.rateTv) ⇒ <code>Promise</code>
-        * [.deleteTvRating(tv_id, options)](#TheMovieDb.deleteTvRating) ⇒ <code>Promise</code>
-        * [.getLatestTv(options)](#TheMovieDb.getLatestTv) ⇒ <code>Promise</code>
-        * [.getAiringTodayTvs(options)](#TheMovieDb.getAiringTodayTvs) ⇒ <code>Promise</code>
-        * [.getOnTheAirTvs(options)](#TheMovieDb.getOnTheAirTvs) ⇒ <code>Promise</code>
-        * [.getPopularTvs(options)](#TheMovieDb.getPopularTvs) ⇒ <code>Promise</code>
-        * [.getTopRatedTvs(options)](#TheMovieDb.getTopRatedTvs) ⇒ <code>Promise</code>
+        * [.getTvShow(tv_id, options)](#TheMovieDb.getTvShow) ⇒ <code>Promise</code>
+        * [.getTvShowAccountStates(tv_id, options)](#TheMovieDb.getTvShowAccountStates) ⇒ <code>Promise</code>
+        * [.getTvShowAlternativeTitles(tv_id, options)](#TheMovieDb.getTvShowAlternativeTitles) ⇒ <code>Promise</code>
+        * [.getTvShowChanges(tv_id, options)](#TheMovieDb.getTvShowChanges) ⇒ <code>Promise</code>
+        * [.getTvShowContentRatings(tv_id, options)](#TheMovieDb.getTvShowContentRatings) ⇒ <code>Promise</code>
+        * [.getTvShowCredits(tv_id, options)](#TheMovieDb.getTvShowCredits) ⇒ <code>Promise</code>
+        * [.getTvShowEpisodeGroups(tv_id, options)](#TheMovieDb.getTvShowEpisodeGroups) ⇒ <code>Promise</code>
+        * [.getTvShowExternalIds(tv_id, options)](#TheMovieDb.getTvShowExternalIds) ⇒ <code>Promise</code>
+        * [.getTvShowImages(tv_id, options)](#TheMovieDb.getTvShowImages) ⇒ <code>Promise</code>
+        * [.getTvShowKeywords(tv_id, options)](#TheMovieDb.getTvShowKeywords) ⇒ <code>Promise</code>
+        * [.getTvShowRecommendations(tv_id, options)](#TheMovieDb.getTvShowRecommendations) ⇒ <code>Promise</code>
+        * [.getTvShowReviews(tv_id, options)](#TheMovieDb.getTvShowReviews) ⇒ <code>Promise</code>
+        * [.getTvShowScreenedTheatrically(tv_id, options)](#TheMovieDb.getTvShowScreenedTheatrically) ⇒ <code>Promise</code>
+        * [.getTvShowSimilar(tv_id, options)](#TheMovieDb.getTvShowSimilar) ⇒ <code>Promise</code>
+        * [.getTvShowTranslations(tv_id, options)](#TheMovieDb.getTvShowTranslations) ⇒ <code>Promise</code>
+        * [.getTvShowVideos(tv_id, options)](#TheMovieDb.getTvShowVideos) ⇒ <code>Promise</code>
+        * [.rateTvShow(tv_id, options, body)](#TheMovieDb.rateTvShow) ⇒ <code>Promise</code>
+        * [.deleteTvShowRating(tv_id, options)](#TheMovieDb.deleteTvShowRating) ⇒ <code>Promise</code>
+        * [.getLatestTvShow(options)](#TheMovieDb.getLatestTvShow) ⇒ <code>Promise</code>
+        * [.getAiringTodayTvShows(options)](#TheMovieDb.getAiringTodayTvShows) ⇒ <code>Promise</code>
+        * [.getOnTheAirTvShows(options)](#TheMovieDb.getOnTheAirTvShows) ⇒ <code>Promise</code>
+        * [.getPopularTvShows(options)](#TheMovieDb.getPopularTvShows) ⇒ <code>Promise</code>
+        * [.getTopRatedTvShows(options)](#TheMovieDb.getTopRatedTvShows) ⇒ <code>Promise</code>
 
 <a name="new_TheMovieDb_new"></a>
 
@@ -241,7 +222,7 @@ Creates an instance of TheMovieDb.
 
 <a name="TheMovieDb+query"></a>
 
-### theMovieDb.query(startUrl, [options]) ⇒ <code>string</code>
+### theMovieDb.query(startUrl, [options]) ⇒ <code>URL</code>
 Make GET parameters
 
 **Kind**: instance method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -375,24 +356,6 @@ invlude private lists if you are the owner.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
-<a name="TheMovieDb.getMyLists"></a>
-
-### TheMovieDb.getMyLists(options) ⇒ <code>Promise</code>
-Get all of the lists created by an account. Will
-invlude private lists if you are the owner.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 | options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getFavoritesMovies"></a>
@@ -412,22 +375,6 @@ Get the list of your favorite movies.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getMyFavoritesMovies"></a>
-
-### TheMovieDb.getMyFavoritesMovies(options) ⇒ <code>Promise</code>
-Get the list of your favorite movies.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
 <a name="TheMovieDb.getFavoritesTvShows"></a>
 
 ### TheMovieDb.getFavoritesTvShows(account_id, options) ⇒ <code>Promise</code>
@@ -438,22 +385,6 @@ Get the list of your favorite TV shows.
 | Param | Type | Description |
 | --- | --- | --- |
 | account_id | <code>number</code> |  |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
-<a name="TheMovieDb.getMyFavoritesTvShows"></a>
-
-### TheMovieDb.getMyFavoritesTvShows(options) ⇒ <code>Promise</code>
-Get the list of your favorite TV shows.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
@@ -480,20 +411,6 @@ a favorite item.
 | body.media_id | <code>number</code> | Required |
 | body.favorite | <code>boolean</code> | Required |
 
-<a name="TheMovieDb.markAsMyFavorite"></a>
-
-### TheMovieDb.markAsMyFavorite(options) ⇒ <code>Promise</code>
-This method allows you to mark a movie or TV show as
-a favorite item.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.session_id | <code>string</code> | Required |
-
 <a name="TheMovieDb.getRatedMovies"></a>
 
 ### TheMovieDb.getRatedMovies(account_id, options) ⇒ <code>Promise</code>
@@ -504,22 +421,6 @@ Get a list of all the movies you have rated.
 | Param | Type | Description |
 | --- | --- | --- |
 | account_id | <code>number</code> |  |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
-<a name="TheMovieDb.getMyRatedMovies"></a>
-
-### TheMovieDb.getMyRatedMovies(options) ⇒ <code>Promise</code>
-Get a list of all the movies you have rated.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
@@ -544,22 +445,6 @@ Get a list of all the TV shows you have rated.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getMyRatedTvShows"></a>
-
-### TheMovieDb.getMyRatedTvShows(options) ⇒ <code>Promise</code>
-Get a list of all the TV shows you have rated.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
 <a name="TheMovieDb.getRatedTvEpisodes"></a>
 
 ### TheMovieDb.getRatedTvEpisodes(account_id, options) ⇒ <code>Promise</code>
@@ -570,22 +455,6 @@ Get a list of all the TV episodes you have rated.
 | Param | Type | Description |
 | --- | --- | --- |
 | account_id | <code>number</code> |  |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
-<a name="TheMovieDb.getMyRatedTvEpisodes"></a>
-
-### TheMovieDb.getMyRatedTvEpisodes(options) ⇒ <code>Promise</code>
-Get a list of all the TV episodes you have rated.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
@@ -611,23 +480,6 @@ watchlist.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getMyMovieWatchlist"></a>
-
-### TheMovieDb.getMyMovieWatchlist(options) ⇒ <code>Promise</code>
-Get a list of all the movies you have added to your
-watchlist.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
 <a name="TheMovieDb.getTvShowWatchlist"></a>
 
 ### TheMovieDb.getTvShowWatchlist(account_id, options) ⇒ <code>Promise</code>
@@ -646,26 +498,9 @@ watchlist.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getMyTvShowWatchlist"></a>
-
-### TheMovieDb.getMyTvShowWatchlist(options) ⇒ <code>Promise</code>
-Get a list of all the TV shows you have added to your
-watchlist.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
 <a name="TheMovieDb.addToWatchlist"></a>
 
-### TheMovieDb.addToWatchlist(account_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.addToWatchlist(account_id, options, body) ⇒ <code>Promise</code>
 Add a movie or TV show to your watchlist.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -675,26 +510,11 @@ Add a movie or TV show to your watchlist.
 | account_id | <code>number</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
-
-<a name="TheMovieDb.addToMyWatchlist"></a>
-
-### TheMovieDb.addToMyWatchlist(options) ⇒ <code>Promise</code>
-Add a movie or TV show to your watchlist.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>Object</code> |  |
-| options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
+| body | <code>Object</code> |  |
+| body.media_type | <code>&#x27;movie&#x27;</code> \| <code>&#x27;tv&#x27;</code> | Required |
+| body.media_id | <code>number</code> | Required |
+| body.watchlist | <code>boolean</code> | Required |
 
 <a name="TheMovieDb.getV4Lists"></a>
 
@@ -709,18 +529,6 @@ Get all of the lists you've created.
 | options | <code>Object</code> | 
 | options.page | <code>number</code> | 
 
-<a name="TheMovieDb.getMyV4Lists"></a>
-
-### TheMovieDb.getMyV4Lists(options) ⇒ <code>Promise</code>
-Get all of the lists you've created.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Object</code> | 
-| options.page | <code>number</code> | 
-
 <a name="TheMovieDb.getV4FavoritesMovies"></a>
 
 ### TheMovieDb.getV4FavoritesMovies(account_id, options) ⇒ <code>Promise</code>
@@ -731,19 +539,6 @@ Get the list of movies you have marked as a favorite.
 | Param | Type |
 | --- | --- |
 | account_id | <code>number</code> | 
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
-<a name="TheMovieDb.getMyV4FavoritesMovies"></a>
-
-### TheMovieDb.getMyV4FavoritesMovies(options) ⇒ <code>Promise</code>
-Get the list of movies you have marked as a favorite.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
 | options | <code>Object</code> | 
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
@@ -762,19 +557,6 @@ Get the list of TV shows you have marked as a favorite.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
 
-<a name="TheMovieDb.getMyV4FavoritesTvShows"></a>
-
-### TheMovieDb.getMyV4FavoritesTvShows(options) ⇒ <code>Promise</code>
-Get the list of TV shows you have marked as a favorite.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
 <a name="TheMovieDb.getV4MovieRecommendations"></a>
 
 ### TheMovieDb.getV4MovieRecommendations(account_id, options) ⇒ <code>Promise</code>
@@ -785,19 +567,6 @@ Get a list of your personal movie recommendations.
 | Param | Type |
 | --- | --- |
 | account_id | <code>number</code> | 
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
-<a name="TheMovieDb.getMyV4MovieRecommendations"></a>
-
-### TheMovieDb.getMyV4MovieRecommendations(options) ⇒ <code>Promise</code>
-Get a list of your personal movie recommendations.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
 | options | <code>Object</code> | 
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
@@ -816,19 +585,6 @@ Get a list of your personal TV show recommendations.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
 
-<a name="TheMovieDb.getMyV4TvShowRecommendations"></a>
-
-### TheMovieDb.getMyV4TvShowRecommendations(options) ⇒ <code>Promise</code>
-Get a list of your personal TV show recommendations.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
 <a name="TheMovieDb.getV4MovieWatchlist"></a>
 
 ### TheMovieDb.getV4MovieWatchlist(account_id, options) ⇒ <code>Promise</code>
@@ -839,19 +595,6 @@ Get the list of movies you have added to your watchlist.
 | Param | Type |
 | --- | --- |
 | account_id | <code>number</code> | 
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
-<a name="TheMovieDb.getMyV4MovieWatchlist"></a>
-
-### TheMovieDb.getMyV4MovieWatchlist(options) ⇒ <code>Promise</code>
-Get the list of movies you have added to your watchlist.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
 | options | <code>Object</code> | 
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
@@ -870,19 +613,6 @@ Get the list of TV shows you have added to your watchlist.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
 
-<a name="TheMovieDb.getMyV4TvShowWatchlist"></a>
-
-### TheMovieDb.getMyV4TvShowWatchlist(options) ⇒ <code>Promise</code>
-Get the list of TV shows you have added to your watchlist.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
 <a name="TheMovieDb.getV4RatedMovies"></a>
 
 ### TheMovieDb.getV4RatedMovies(account_id, options) ⇒ <code>Promise</code>
@@ -897,19 +627,6 @@ Get the list of movies you have rated.
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
 
-<a name="TheMovieDb.getMyV4RatedMovies"></a>
-
-### TheMovieDb.getMyV4RatedMovies(options) ⇒ <code>Promise</code>
-Get the list of movies you have rated.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
 <a name="TheMovieDb.getV4RatedTvShows"></a>
 
 ### TheMovieDb.getV4RatedTvShows(account_id, options) ⇒ <code>Promise</code>
@@ -920,19 +637,6 @@ Get the list of TV shows you have rated.
 | Param | Type |
 | --- | --- |
 | account_id | <code>number</code> | 
-| options | <code>Object</code> | 
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
-| options.page | <code>number</code> | 
-
-<a name="TheMovieDb.getMyV4RatedTvShows"></a>
-
-### TheMovieDb.getMyV4RatedTvShows(options) ⇒ <code>Promise</code>
-Get the list of TV shows you have rated.
-
-**Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
-
-| Param | Type |
-| --- | --- |
 | options | <code>Object</code> | 
 | options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> \| <code>&#x27;release\_date.asc&#x27;</code> \| <code>&#x27;release\_date.desc&#x27;</code> \| <code>&#x27;title.asc&#x27;</code> \| <code>&#x27;title.desc&#x27;</code> \| <code>&#x27;vote\_average.asc&#x27;</code> \| <code>&#x27;vote\_average.desc&#x27;</code> | 
 | options.page | <code>number</code> | 
@@ -1076,7 +780,6 @@ movie certifications on TMDb.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 
 <a name="TheMovieDb.getTvCertifications"></a>
 
@@ -1090,7 +793,6 @@ show certifications on TMDb.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
 
 <a name="TheMovieDb.getMovieChangeList"></a>
 
@@ -1766,9 +1468,9 @@ Get the primary information about a movie.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
+| options.session_id | <code>string</code> |  |
+| options.guest_session_id | <code>string</code> |  |
+| options.append_to_response | <code>string</code> | Example: 'account_states,alternative_titles,changes,credits,external_ids,images,keywords,release_dates,videos,translations,recommendations,similar,reviews,lists' |
 
 <a name="TheMovieDb.getMovieAccountStates"></a>
 
@@ -1782,10 +1484,8 @@ Grab the following account states for a session
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
+| options.guest_session_id | <code>string</code> |  |
 
 <a name="TheMovieDb.getMovieAlternativeTitles"></a>
 
@@ -1799,10 +1499,7 @@ Get all of the alternative titles for a movie.
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
+| options.country | <code>string</code> |  |
 
 <a name="TheMovieDb.getMovieChanges"></a>
 
@@ -1817,9 +1514,8 @@ Get the changes for a movie. By default only the last
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
+| options.start_date | <code>string</code> |  |
+| options.end_date | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getMovieCredits"></a>
@@ -1834,10 +1530,6 @@ Get the cast and crew for a movie.
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getMovieExternalIds"></a>
 
@@ -1852,10 +1544,6 @@ the following external sources.
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getMovieImages"></a>
 
@@ -1870,9 +1558,6 @@ Get the images that belong to a movie.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
-| options.session_id | <code>string</code> | Required |
-| options.sort_by | <code>&#x27;created\_at.asc&#x27;</code> \| <code>&#x27;created\_at.desc&#x27;</code> |  |
-| options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getMovieKeywords"></a>
 
@@ -2002,10 +1687,10 @@ Rate a movie.
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
+| options.guest_session_id | <code>string</code> |  |
 | body | <code>Object</code> |  |
-| body.value | <code>number</code> | Required |
+| body.value | <code>number</code> | Required, min:0.5, max:10 |
 
 <a name="TheMovieDb.deleteMovieRating"></a>
 
@@ -2019,8 +1704,8 @@ Remove your rating for a movie.
 | movie_id | <code>string</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
+| options.guest_session_id | <code>string</code> |  |
 
 <a name="TheMovieDb.getLatestMovie"></a>
 
@@ -2099,6 +1784,7 @@ range.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.region | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.getNetwork"></a>
@@ -2153,6 +1839,7 @@ Get the primary person details by id.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.append_to_response | <code>string</code> | Example: 'changes,movie_credits,tv_credits,combined_credits,external_ids,images,tagged_images,translations' |
 
 <a name="TheMovieDb.getPersonChanges"></a>
 
@@ -2323,8 +2010,8 @@ Search for companies.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.page | <code>number</code> |  |
 | options.query | <code>number</code> | Required |
+| options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.searchCollection"></a>
 
@@ -2337,9 +2024,9 @@ Search for collections.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.query | <code>number</code> | Required |
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
-| options.query | <code>number</code> | Required |
 
 <a name="TheMovieDb.searchKeyword"></a>
 
@@ -2352,8 +2039,8 @@ Search for keywords.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.page | <code>number</code> |  |
 | options.query | <code>number</code> | Required |
+| options.page | <code>number</code> |  |
 
 <a name="TheMovieDb.searchMovie"></a>
 
@@ -2366,8 +2053,13 @@ Search for movies.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.query | <code>number</code> | Required |
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
+| options.include_adult | <code>boolean</code> |  |
+| options.region | <code>string</code> |  |
+| options.year | <code>number</code> |  |
+| options.primary_release_year | <code>number</code> |  |
 
 <a name="TheMovieDb.searchMulti"></a>
 
@@ -2382,8 +2074,11 @@ shows and people in a single request.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.query | <code>number</code> | Required |
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
+| options.include_adult | <code>boolean</code> |  |
+| options.region | <code>string</code> |  |
 
 <a name="TheMovieDb.searchPerson"></a>
 
@@ -2396,8 +2091,11 @@ Search for people.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.query | <code>number</code> | Required |
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
+| options.include_adult | <code>boolean</code> |  |
+| options.region | <code>string</code> |  |
 
 <a name="TheMovieDb.searchTv"></a>
 
@@ -2410,8 +2108,10 @@ Search for a TV show.
 | --- | --- | --- |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.query | <code>number</code> | Required |
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
+| options.first_air_date_year | <code>number</code> |  |
 
 <a name="TheMovieDb.getTrending"></a>
 
@@ -2430,6 +2130,7 @@ life.
 | time_window | <code>&#x27;day&#x27;</code> \| <code>&#x27;week&#x27;</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.language | <code>string</code> |  |
 
 <a name="TheMovieDb.getTvEpisodeGroup"></a>
 
@@ -2461,6 +2162,9 @@ Get the TV episode details by id.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.session_id | <code>string</code> |  |
+| options.guest_session_id | <code>string</code> |  |
+| options.append_to_response | <code>string</code> | Example: 'changes,account_states,credits,external_ids,images,videos' |
 
 <a name="TheMovieDb.getTvEpisodeChanges"></a>
 
@@ -2492,6 +2196,8 @@ Get your rating for a episode.
 | episode_number | <code>number</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.session_id | <code>string</code> | Required |
+| options.guest_session_id | <code>string</code> |  |
 
 <a name="TheMovieDb.getTvEpisodeCredits"></a>
 
@@ -2539,6 +2245,8 @@ Get the images that belong to a TV episode.
 | episode_number | <code>number</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
+| options.language | <code>string</code> |  |
+| options.include_image_language | <code>string</code> |  |
 
 <a name="TheMovieDb.getTvEpisodeTranslations"></a>
 
@@ -2570,8 +2278,9 @@ Rate a TV episode.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.session_id | <code>string</code> | Required |
+| options.guest_session_id | <code>string</code> |  |
 | body | <code>Object</code> |  |
-| body.value | <code>number</code> | Required |
+| body.value | <code>number</code> | Required, min:0.5, max:10 |
 
 <a name="TheMovieDb.deleteTvEpisodeRating"></a>
 
@@ -2620,6 +2329,9 @@ Get the TV season details by id.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.session_id | <code>string</code> |  |
+| options.guest_session_id | <code>string</code> |  |
+| options.append_to_response | <code>string</code> | Example: 'changes,account_states,credits,external_ids,images,videos' |
 
 <a name="TheMovieDb.getTvSeasonChanges"></a>
 
@@ -2650,8 +2362,8 @@ episodes.
 | season_number | <code>number</code> |  |
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
-| options.language | <code>string</code> |  |
 | options.session_id | <code>string</code> | Required |
+| options.guest_session_id | <code>string</code> |  |
 
 <a name="TheMovieDb.getTvSeasonCredits"></a>
 
@@ -2698,6 +2410,7 @@ Get the images that belong to a TV season.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.include_image_language | <code>string</code> |  |
 
 <a name="TheMovieDb.getTvSeasonVideos"></a>
 
@@ -2714,9 +2427,9 @@ Get the videos that have been added to a TV season.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTv"></a>
+<a name="TheMovieDb.getTvShow"></a>
 
-### TheMovieDb.getTv(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShow(tv_id, options) ⇒ <code>Promise</code>
 Get the primary TV show details by id.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2727,10 +2440,13 @@ Get the primary TV show details by id.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.session_id | <code>string</code> |  |
+| options.guest_session_id | <code>string</code> |  |
+| options.append_to_response | <code>string</code> | Example: 'account_states,alternative_titles,changes,content_ratings,credits,episode_groups,external_ids,images,keywords,recommendations,reviews,screened_theatrically,similar,translations,videos' |
 
-<a name="TheMovieDb.getTvAccountStates"></a>
+<a name="TheMovieDb.getTvShowAccountStates"></a>
 
-### TheMovieDb.getTvAccountStates(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowAccountStates(tv_id, options) ⇒ <code>Promise</code>
 Grab the following account states for a session:
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2741,10 +2457,12 @@ Grab the following account states for a session:
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.session_id | <code>string</code> |  |
+| options.guest_session_id | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvAlternativeTitles"></a>
+<a name="TheMovieDb.getTvShowAlternativeTitles"></a>
 
-### TheMovieDb.getTvAlternativeTitles(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowAlternativeTitles(tv_id, options) ⇒ <code>Promise</code>
 Returns all of the alternative titles for a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2756,9 +2474,9 @@ Returns all of the alternative titles for a TV show.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvChanges"></a>
+<a name="TheMovieDb.getTvShowChanges"></a>
 
-### TheMovieDb.getTvChanges(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowChanges(tv_id, options) ⇒ <code>Promise</code>
 Get the changes for a TV show. By default only the last
 24 hours are returned.
 
@@ -2771,9 +2489,9 @@ Get the changes for a TV show. By default only the last
 | options.api_key | <code>string</code> | Required |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getTvContentRatings"></a>
+<a name="TheMovieDb.getTvShowContentRatings"></a>
 
-### TheMovieDb.getTvContentRatings(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowContentRatings(tv_id, options) ⇒ <code>Promise</code>
 Get the list of content ratings (certifications) that
 have been added to a TV show.
 
@@ -2786,9 +2504,9 @@ have been added to a TV show.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvCredits"></a>
+<a name="TheMovieDb.getTvShowCredits"></a>
 
-### TheMovieDb.getTvCredits(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowCredits(tv_id, options) ⇒ <code>Promise</code>
 Get the credits (cast and crew) that have been added
 to a TV show.
 
@@ -2801,9 +2519,9 @@ to a TV show.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvEpisodeGroups"></a>
+<a name="TheMovieDb.getTvShowEpisodeGroups"></a>
 
-### TheMovieDb.getTvEpisodeGroups(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowEpisodeGroups(tv_id, options) ⇒ <code>Promise</code>
 Get all of the episode groups that have been created
 for a TV show.
 
@@ -2816,9 +2534,9 @@ for a TV show.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvExternalIds"></a>
+<a name="TheMovieDb.getTvShowExternalIds"></a>
 
-### TheMovieDb.getTvExternalIds(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowExternalIds(tv_id, options) ⇒ <code>Promise</code>
 Get the external ids for a TV show. We currently
 support the following external sources.
 
@@ -2831,9 +2549,9 @@ support the following external sources.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvImages"></a>
+<a name="TheMovieDb.getTvShowImages"></a>
 
-### TheMovieDb.getTvImages(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowImages(tv_id, options) ⇒ <code>Promise</code>
 Get the images that belong to a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2844,10 +2562,11 @@ Get the images that belong to a TV show.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
+| options.include_image_language | <code>string</code> |  |
 
-<a name="TheMovieDb.getTvKeywords"></a>
+<a name="TheMovieDb.getTvShowKeywords"></a>
 
-### TheMovieDb.getTvKeywords(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowKeywords(tv_id, options) ⇒ <code>Promise</code>
 Get the keywords that have been added to a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2858,9 +2577,9 @@ Get the keywords that have been added to a TV show.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 
-<a name="TheMovieDb.getTvRecommendations"></a>
+<a name="TheMovieDb.getTvShowRecommendations"></a>
 
-### TheMovieDb.getTvRecommendations(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowRecommendations(tv_id, options) ⇒ <code>Promise</code>
 Get the list of TV show recommendations for this item.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2873,9 +2592,9 @@ Get the list of TV show recommendations for this item.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getTvReviews"></a>
+<a name="TheMovieDb.getTvShowReviews"></a>
 
-### TheMovieDb.getTvReviews(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowReviews(tv_id, options) ⇒ <code>Promise</code>
 Get the reviews for a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2888,9 +2607,9 @@ Get the reviews for a TV show.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getTvScreenedTheatrically"></a>
+<a name="TheMovieDb.getTvShowScreenedTheatrically"></a>
 
-### TheMovieDb.getTvScreenedTheatrically(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowScreenedTheatrically(tv_id, options) ⇒ <code>Promise</code>
 Get a list of seasons or episodes that have been
 screened in a film festival or theatre.
 
@@ -2902,9 +2621,9 @@ screened in a film festival or theatre.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 
-<a name="TheMovieDb.getTvSimilar"></a>
+<a name="TheMovieDb.getTvShowSimilar"></a>
 
-### TheMovieDb.getTvSimilar(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowSimilar(tv_id, options) ⇒ <code>Promise</code>
 Get a list of similar TV shows. These items are
 assembled by looking at keywords and genres.
 
@@ -2918,9 +2637,9 @@ assembled by looking at keywords and genres.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getTvTranslations"></a>
+<a name="TheMovieDb.getTvShowTranslations"></a>
 
-### TheMovieDb.getTvTranslations(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowTranslations(tv_id, options) ⇒ <code>Promise</code>
 Get a list of the translations that exist for a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2931,9 +2650,9 @@ Get a list of the translations that exist for a TV show.
 | options | <code>Object</code> |  |
 | options.api_key | <code>string</code> | Required |
 
-<a name="TheMovieDb.getTvVideos"></a>
+<a name="TheMovieDb.getTvShowVideos"></a>
 
-### TheMovieDb.getTvVideos(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.getTvShowVideos(tv_id, options) ⇒ <code>Promise</code>
 Get the videos that have been added to a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2945,9 +2664,9 @@ Get the videos that have been added to a TV show.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.rateTv"></a>
+<a name="TheMovieDb.rateTvShow"></a>
 
-### TheMovieDb.rateTv(tv_id, options, body) ⇒ <code>Promise</code>
+### TheMovieDb.rateTvShow(tv_id, options, body) ⇒ <code>Promise</code>
 Rate a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2960,11 +2679,11 @@ Rate a TV show.
 | options.session_id | <code>string</code> |  |
 | options.guest_session_id | <code>string</code> |  |
 | body | <code>Object</code> |  |
-| body.value | <code>number</code> | Required |
+| body.value | <code>number</code> | Required, min:0.5, max:10 |
 
-<a name="TheMovieDb.deleteTvRating"></a>
+<a name="TheMovieDb.deleteTvShowRating"></a>
 
-### TheMovieDb.deleteTvRating(tv_id, options) ⇒ <code>Promise</code>
+### TheMovieDb.deleteTvShowRating(tv_id, options) ⇒ <code>Promise</code>
 Remove your rating for a TV show.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -2977,9 +2696,9 @@ Remove your rating for a TV show.
 | options.session_id | <code>string</code> |  |
 | options.guest_session_id | <code>string</code> |  |
 
-<a name="TheMovieDb.getLatestTv"></a>
+<a name="TheMovieDb.getLatestTvShow"></a>
 
-### TheMovieDb.getLatestTv(options) ⇒ <code>Promise</code>
+### TheMovieDb.getLatestTvShow(options) ⇒ <code>Promise</code>
 Get the most newly created TV show. This is a live
 response and will continuously change.
 
@@ -2991,9 +2710,9 @@ response and will continuously change.
 | options.api_key | <code>string</code> | Required |
 | options.language | <code>string</code> |  |
 
-<a name="TheMovieDb.getAiringTodayTvs"></a>
+<a name="TheMovieDb.getAiringTodayTvShows"></a>
 
-### TheMovieDb.getAiringTodayTvs(options) ⇒ <code>Promise</code>
+### TheMovieDb.getAiringTodayTvShows(options) ⇒ <code>Promise</code>
 Get a list of TV shows that are airing today. This
 query is purely day based as we do not currently
 support airing times.
@@ -3007,9 +2726,9 @@ support airing times.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getOnTheAirTvs"></a>
+<a name="TheMovieDb.getOnTheAirTvShows"></a>
 
-### TheMovieDb.getOnTheAirTvs(options) ⇒ <code>Promise</code>
+### TheMovieDb.getOnTheAirTvShows(options) ⇒ <code>Promise</code>
 Get a list of shows that are currently on the air.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
@@ -3021,9 +2740,9 @@ Get a list of shows that are currently on the air.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getPopularTvs"></a>
+<a name="TheMovieDb.getPopularTvShows"></a>
 
-### TheMovieDb.getPopularTvs(options) ⇒ <code>Promise</code>
+### TheMovieDb.getPopularTvShows(options) ⇒ <code>Promise</code>
 Get a list of the current popular TV shows on TMDb.
 This list updates daily.
 
@@ -3036,9 +2755,9 @@ This list updates daily.
 | options.language | <code>string</code> |  |
 | options.page | <code>number</code> |  |
 
-<a name="TheMovieDb.getTopRatedTvs"></a>
+<a name="TheMovieDb.getTopRatedTvShows"></a>
 
-### TheMovieDb.getTopRatedTvs(options) ⇒ <code>Promise</code>
+### TheMovieDb.getTopRatedTvShows(options) ⇒ <code>Promise</code>
 Get a list of the top rated TV shows on TMDb.
 
 **Kind**: static method of [<code>TheMovieDb</code>](#TheMovieDb)  
