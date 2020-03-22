@@ -8,6 +8,9 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.session_id
+   * @param {string} options.guest_session_id
+   * @param {string} options.append_to_response - Example: 'changes,account_states,credits,external_ids,images,videos'
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -15,7 +18,7 @@ export default {
     return this.getV3(
       `tv/${tv_id}/season/${season_number}/episode/${episode_number}`,
       {
-        ...this.metas(["api_key", "language"]),
+        ...this.metas(["api_key", "language", "session_id", "guest_session_id"]),
         ...options
       }
     );
@@ -46,6 +49,8 @@ export default {
    * @param {number} episode_number
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {string} options.session_id - Required
+   * @param {string} options.guest_session_id
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -108,6 +113,8 @@ export default {
    * @param {number} episode_number
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {string} options.language
+   * @param {string} options.include_image_language
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -149,8 +156,9 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.session_id - Required
+   * @param {string} options.guest_session_id
    * @param {Object} body
-   * @param {number} body.value - Required
+   * @param {number} body.value - Required, min:0.5, max:10
    * @returns {Promise}
    * @memberof TheMovieDb
    */

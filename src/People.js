@@ -6,6 +6,7 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.append_to_response - Example: 'changes,movie_credits,tv_credits,combined_credits,external_ids,images,tagged_images,translations'
    * @returns {Promise}
    * @memberof TheMovieDb
    */

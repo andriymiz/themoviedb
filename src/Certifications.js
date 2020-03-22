@@ -5,7 +5,6 @@ export default {
    * movie certifications on TMDb.
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -21,7 +20,6 @@ export default {
    * show certifications on TMDb.
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
    * @returns {Promise}
    * @memberof TheMovieDb
    */

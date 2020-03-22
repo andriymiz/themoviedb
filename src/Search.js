@@ -4,8 +4,8 @@ export default {
    * Search for companies.
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {number} options.page
    * @param {number} options.query - Required
+   * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -20,9 +20,9 @@ export default {
    * Search for collections.
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {number} options.query - Required
    * @param {string} options.language
    * @param {number} options.page
-   * @param {number} options.query - Required
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -37,8 +37,8 @@ export default {
    * Search for keywords.
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {number} options.page
    * @param {number} options.query - Required
+   * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -53,8 +53,13 @@ export default {
    * Search for movies.
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {number} options.query - Required
    * @param {string} options.language
    * @param {number} options.page
+   * @param {boolean} options.include_adult
+   * @param {string} options.region
+   * @param {number} options.year
+   * @param {number} options.primary_release_year
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -71,8 +76,11 @@ export default {
    * shows and people in a single request.
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {number} options.query - Required
    * @param {string} options.language
    * @param {number} options.page
+   * @param {boolean} options.include_adult
+   * @param {string} options.region
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -87,8 +95,11 @@ export default {
    * Search for people.
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {number} options.query - Required
    * @param {string} options.language
    * @param {number} options.page
+   * @param {boolean} options.include_adult
+   * @param {string} options.region
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -103,8 +114,10 @@ export default {
    * Search for a TV show.
    * @param {Object} options
    * @param {string} options.api_key - Required
+   * @param {number} options.query - Required
    * @param {string} options.language
    * @param {number} options.page
+   * @param {number} options.first_air_date_year
    * @returns {Promise}
    * @memberof TheMovieDb
    */

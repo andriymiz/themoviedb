@@ -6,15 +6,15 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
+   * @param {string} options.session_id
+   * @param {string} options.guest_session_id
+   * @param {string} options.append_to_response - Example: 'account_states,alternative_titles,changes,credits,external_ids,images,keywords,release_dates,videos,translations,recommendations,similar,reviews,lists'
    * @returns {Promise}
    * @memberof TheMovieDb
    */
   getMovie(movie_id, options) {
     return this.getV3(`movie/${movie_id}`, {
-      ...this.metas(["api_key", "language"]),
+      ...this.metas(["api_key", "language", "session_id", "guest_session_id"]),
       ...options
     });
   },
@@ -24,10 +24,8 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
    * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
+   * @param {string} options.guest_session_id
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -43,10 +41,7 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
+   * @param {string} options.country
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -63,9 +58,8 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
+   * @param {string} options.start_date
+   * @param {string} options.end_date
    * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
@@ -82,10 +76,6 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -102,10 +92,6 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -122,15 +108,12 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
-   * @param {string} options.session_id - Required
-   * @param {('created_at.asc'|'created_at.desc')} options.sort_by
-   * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
    */
   getMovieImages(movie_id, options) {
     return this.getV3(`movie/${movie_id}/images`, {
-      ...this.metas(["api_key", "language", "include_image_language"]),
+      ...this.metas(["api_key", "language"]),
       ...options
     });
   },
@@ -272,10 +255,10 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
    * @param {string} options.session_id - Required
+   * @param {string} options.guest_session_id
    * @param {Object} body
-   * @param {number} body.value - Required
+   * @param {number} body.value - Required, min:0.5, max:10
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -295,8 +278,8 @@ export default {
    * @param {string} movie_id
    * @param {Object} options
    * @param {string} options.api_key - Required
-   * @param {string} options.language
    * @param {string} options.session_id - Required
+   * @param {string} options.guest_session_id
    * @returns {Promise}
    * @memberof TheMovieDb
    */
@@ -390,6 +373,7 @@ export default {
    * @param {Object} options
    * @param {string} options.api_key - Required
    * @param {string} options.language
+   * @param {string} options.region
    * @param {number} options.page
    * @returns {Promise}
    * @memberof TheMovieDb
