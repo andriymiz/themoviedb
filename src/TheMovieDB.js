@@ -178,7 +178,7 @@ class TheMovieDb {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=utf-8",
-        Authorization: "Bearer " + this.api_token
+        Authorization: "Bearer " + (this.access_token || this.api_token)
       }
     }).then(res => res.json());
   }
@@ -197,7 +197,7 @@ class TheMovieDb {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json;charset=utf-8",
-        Authorization: "Bearer " + this.api_token
+        Authorization: "Bearer " + (this.access_token || this.api_token)
       },
       body: JSON.stringify(body)
     }).then(res => res.json());
