@@ -188,7 +188,7 @@ export default {
    * @memberof TheMovieDb
    */
   getTvShowWatchlist(account_id = (this.v3_account || {id:0}).id, options) {
-    return this.getV3(`account/${account_id}/watchlist/movies`, {
+    return this.getV3(`account/${account_id}/watchlist/tv`, {
       ...this.metas(["api_key", "language", "session_id"]),
       ...options
     });
